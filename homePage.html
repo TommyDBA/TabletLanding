@@ -17,7 +17,7 @@
 		<script language="javascript" type="text/javascript">
 			    // Refresh Rate is how often you want to refresh the page 
 				// bassed off the user inactivity. 
-				var refresh_rate = 300; //<-- In seconds, change to your needs
+				var refresh_rate = 60; //<-- In seconds, change to your needs
 				var last_user_action = 0;
 				
 				// Reset the Timer on users last action
@@ -47,9 +47,9 @@
 				// The code that checks if the window needs to reload
 				function refreshCheck() {
 				  if (last_user_action >= refresh_rate && document.readyState == "complete") {
-					window.location.href = window.location.href;
+					//window.location.href = window.location.href;
 					//window.location.reload(); // If this is called no reset is needed
-					//reset(); // We want to reset just to make sure the location reload is not called.
+					reset(); // We want to reset just to make sure the location reload is not called.
 				  }
 
 				}
