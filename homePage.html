@@ -47,8 +47,9 @@
 				// The code that checks if the window needs to reload
 				function refreshCheck() {
 				  if (last_user_action >= refresh_rate && document.readyState == "complete") {
-					window.location.reload(); // If this is called no reset is needed
-					reset(); // We want to reset just to make sure the location reload is not called.
+					window.location.href = window.location.href;
+					//window.location.reload(); // If this is called no reset is needed
+					//reset(); // We want to reset just to make sure the location reload is not called.
 				  }
 
 				}
