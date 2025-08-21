@@ -11,33 +11,39 @@
     <body >
 		</br>
 		</br>
-		<input type="text" class="form-control" id="refreshTimer" disabled placeholder="???">
-			<button onclick="location.reload()">
-				<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/home.svg" alt="Home" width=50 height=50/>
-			</button>
+		<button onclick="loadEmbed('home')">
+			<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/home.svg" alt="Home" width=50 height=50/>
+		</button>
 		<div class="menu" id="mainDiv" style+"width:100vw;  height:100vh;">
-			<button onclick="loadEmbed('newCust')">
-				<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/plus.svg" alt="New Customer" width=100 height=100/>
-			</button>
-			<button onclick="loadEmbed('returnCust')">
-				<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/refresh.svg" alt="Existing Customer"  width=100 height=100/>
-			</button>
+			
 		 </div>
 		
 		<script language="javascript" type="text/javascript">
 		
 				const embeds = {
-							  newCust: `
-								<iframe src="https://forms.monday.com/forms/embed/ddf346b988a73cfcb07616d66579505b?r=use1" style="border: 0; width:100vw;  height:100vh; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
-							  `,
-							  returnCust: `
-								<iframe src="https://forms.monday.com/forms/embed/c9303f537a35784cfe204c6217cce992?r=use1" style="border: 0; width:100vw;  height:100vh; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
-							  `
+								home: `
+									<button onclick="loadEmbed('newCust')">
+										<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/plus.svg" alt="New Customer" width=100 height=100/>
+									</button>
+									<button onclick="loadEmbed('returnCust')">
+										<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/refresh.svg" alt="Existing Customer"  width=100 height=100/>
+									</button>
+								`,
+								newCust: `
+									<iframe src="https://forms.monday.com/forms/embed/ddf346b988a73cfcb07616d66579505b?r=use1" style="border: 0; width:100vw;  height:100vh; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
+								`,
+								returnCust: `
+									<iframe src="https://forms.monday.com/forms/embed/c9303f537a35784cfe204c6217cce992?r=use1" style="border: 0; width:100vw;  height:100vh; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
+								`
 							};
 				function loadEmbed(key) {
 					document.getElementById("mainDiv").innerHTML = embeds[key];
 				}
 				
+				window.onload = function() {
+					loadEmbed('home');
+				};
+			
 		</script>
     </body>
 </html>
