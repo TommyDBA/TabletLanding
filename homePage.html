@@ -5,9 +5,57 @@
         <style>
             * {margin:0; padding: 0; color:red;}
         </style>
+		
     </head>
 
     <body >
+		<input type="text" class="form-control" id="refreshTimer" disabled placeholder="???">
         <iframe src="https://forms.monday.com/forms/embed/893a76eeb3ff91cb6e6c3ac2b1daab01?r=use1"  style="border: 0; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25); width:100vw;  height:100vh;"></iframe>
+		
+		<script language="javascript" type="text/javascript">
+			    // Refresh Rate is how often you want to refresh the page 
+				// bassed off the user inactivity. 
+				var refresh_rate = 300; //<-- In seconds, change to your needs
+				var last_user_action = 0;
+				
+				// Reset the Timer on users last action
+				function reset() {
+				  last_user_action = 0;
+				  updateVisualTimer('Reset Timer');
+				}
+
+				function updateVisualTimer(value) {
+				  var element = document.getElementById('refreshTimer');
+				  if (value) {
+					element.value = value
+				  } else if (last_user_action >= refresh_rate) {
+					element.value = 'Refreshing';
+				  } else {
+					element.value = (refresh_rate - last_user_action);
+				  }
+				}
+
+				// Count Down that executes ever second
+				setInterval(function() {
+				  last_user_action++;
+				  refreshCheck();
+				  updateVisualTimer();
+				}, 1000);
+
+				// The code that checks if the window needs to reload
+				function refreshCheck() {
+				  if (last_user_action >= refresh_rate && document.readyState == "complete") {
+					window.location.reload(); // If this is called no reset is needed
+					reset(); // We want to reset just to make sure the location reload is not called.
+				  }
+
+				}
+				window.addEventListener("click", reset, false);
+				window.addEventListener("mousemove", reset, false);
+				window.addEventListener("keypress", reset, false);
+				window.addEventListener("scroll", reset, false);
+				document.addEventListener("touchMove", reset, false);
+				document.addEventListener("touchEnd", reset, false);
+		</script>
     </body>
 </html>
