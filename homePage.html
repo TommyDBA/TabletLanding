@@ -29,7 +29,6 @@
 									<button onclick="loadEmbed('returnCust')">
 										<img src="https://raw.githubusercontent.com/TommyDBA/TabletLanding/refs/heads/main/refresh.svg" alt="Existing Customer"  width=100 height=100/>
 									</button>
-		 							<h2>test</h2>
 								`,
 								newCust: `
 									<iframe src="https://forms.monday.com/forms/embed/ddf346b988a73cfcb07616d66579505b?r=use1" style="border: 0; width:100vw;  height:100vh; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
@@ -40,6 +39,9 @@
 							};
 				function loadEmbed(key) {
 					document.getElementById("mainDiv").innerHTML = embeds[key];
+					if key = 'home'{
+						location.reload()
+					}
 				}
 				
 				window.onload = function() {
